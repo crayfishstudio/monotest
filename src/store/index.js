@@ -1,10 +1,10 @@
-import { createStore } from 'vuex'
-import users from './modules/users.js'
-import selectedUsers from './modules/selectedUsers.js'
+import { createStore } from "vuex";
+import users from "./modules/users";
+import selectedUsers from "./modules/selectedUsers";
 
 export default createStore({
   modules: {
     users,
-    selectedUsers
-  }
-})
+    selectedUsers,
+  },
+});

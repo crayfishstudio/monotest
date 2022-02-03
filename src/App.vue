@@ -1,31 +1,42 @@
 <template>
   <div class="app">
-    <header>
-      mono test task
-    </header>
+    <header>mono test task</header>
     <main>
       <aside class="sidebar">
         <router-link :to="'/'">Users</router-link>
-        <router-link :to="'selectedUsers'">Selected users</router-link>
+        <router-link :to="'selected-users'">Selected users</router-link>
       </aside>
       <div class="content">
-        <User/>
+        <User />
+        {{ allUsers }}
       </div>
     </main>
-    <footer>
-      Футер
-    </footer>
+    <footer>Футер</footer>
   </div>
 </template>
 
 <script>
-import User from "./components/User.vue"
+import User from "./components/User.vue";
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: "App",
   components: {
-    User
+    User,
   },
+  computed: {
+    ...mapGetters({
+      allUsers: 'users/allUsers'
+    })
+  },
+  methods: {
+    ...mapActions({
+      getUsers: 'users/getUsers'
+    })
+  },
+  created() {
+    this.getUsers();
+  }
 };
 </script>
 
@@ -59,13 +70,12 @@ export default {
         display: block;
 
         &:not(:last-of-type) {
-          margin-bottom: .75rem;
+          margin-bottom: 0.75rem;
         }
       }
     }
 
     .content {
-
     }
   }
 }
