@@ -1,71 +1,29 @@
 <template>
-  <div class="app">
-    <header>
-      mono test task
-    </header>
-    <main>
-      <aside class="sidebar">
-        <router-link :to="'/'">Users</router-link>
-        <router-link :to="'selected'">Selected users</router-link>
-      </aside>
-      <div class="content">
-        <User/>
-      </div>
-    </main>
-    <footer>
-      Футер
-    </footer>
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
   </div>
+  <router-view />
 </template>
 
-<script>
-import User from "./components/User.vue"
-
-export default {
-  name: "App",
-  components: {
-    User
-  },
-};
-</script>
-
 <style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 
-.app {
-  header {
-    width: 100%;
-    background-color: #666;
-    color: #fff;
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-  }
+#nav {
+  padding: 30px;
 
-  main {
-    display: flex;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-    .sidebar {
-      width: 256px;
-      padding: 1rem 2rem;
-      border-right: 1px solid #666;
-
-      a {
-        display: block;
-
-        &:not(:last-of-type) {
-          margin-bottom: .75rem;
-        }
-      }
-    }
-
-    .content {
-
+    &.router-link-exact-active {
+      color: #42b983;
     }
   }
 }
